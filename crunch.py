@@ -80,6 +80,9 @@ def getFoundRow(org):
         first_name = founder["data"]["properties"]["first_name"]
         last_name = founder["data"]["properties"]["last_name"]
         degrees = getDegrees(founder)
+        for degree in degrees:
+          print degree
+          print first_name, last_name, org
 
       except:
         print "error"
@@ -87,8 +90,22 @@ def getFoundRow(org):
     return founders
 
 def getDegrees(fjson):
-  pass
+  try:
+    degs = fjson["data"]["relationships"]["degrees"]["items"]
+    info = []
+    for degree in degs:
+      school = degree["organization_name"]
+      degtype = degree["degree_type_name"]
+      completed = degree["completed_on"]
+      print school, degtype, completed
+      tup = (school, degtype, completed)
+      info.append(tup)
+    return info
 
+  except:
+    print "no degrees"
+
+  
 def getFounders(orgjson):
 
   founderPaths = []
