@@ -83,7 +83,8 @@ def getFoundRow(org):
         for degree in degrees:
           print degree
           print first_name, last_name, org
-
+          tup = (org, first_name, last_name, degree[0], degree[1], degree[2])
+          yield tup
       except:
         print "error"
 
