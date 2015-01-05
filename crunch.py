@@ -68,6 +68,22 @@ def getLocation(orgjson):
 
   return street, city
 
+def writeFoundOrg(orgs, fname):
+
+  f = open(fname, 'wt')
+
+  try:
+    writer = csv.writer(f)
+    for org in orgs:
+      out = getFoundRow(org)
+      time.sleep(1.25)
+      for founder in out:
+        print founder 
+        if founder is not None:
+          writer.writerow(founder)
+
+  finally:
+    f.close()
 
 def getFoundRow(org):
   jorg = getOrganization(org)
