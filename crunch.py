@@ -102,13 +102,14 @@ def getFoundRow(org):
     funding = getTotalFunding(jorg)
     for founder in founders:
       try:
+        founded_on = jorg["data"]["properties"]["founded_on"]
         first_name = founder["data"]["properties"]["first_name"]
         last_name = founder["data"]["properties"]["last_name"]
         degrees = getDegrees(founder)
         for degree in degrees:
           print degree
           print first_name, last_name, org
-          tup = (org, funding, first_name, last_name, degree[0], degree[1], degree[2])
+          tup = (org, funding, founded_on, first_name, last_name, degree[0], degree[1], degree[2])
           yield tup
       except:
         print "error"
