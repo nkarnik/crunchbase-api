@@ -75,6 +75,7 @@ def getFoundRow(org):
 
   if validate(jorg):
     founders = getFounders(jorg)
+    funding = getTotalFunding(jorg)
     for founder in founders:
       try:
         first_name = founder["data"]["properties"]["first_name"]
@@ -83,12 +84,12 @@ def getFoundRow(org):
         for degree in degrees:
           print degree
           print first_name, last_name, org
-          tup = (org, first_name, last_name, degree[0], degree[1], degree[2])
+          tup = (org, funding, first_name, last_name, degree[0], degree[1], degree[2])
           yield tup
       except:
         print "error"
 
-    return founders
+    
 
 def getDegrees(fjson):
   try:
