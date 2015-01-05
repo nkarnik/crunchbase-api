@@ -30,7 +30,7 @@ def getLatLong(street, city):
 
 def getOrganization(org):
 
-  request_url = "http://api.crunchbase.com/v/2/organization/" + org + "?user_key=" + key2
+  request_url = "http://api.crunchbase.com/v/2/organization/" + org + "?user_key=" + key1
   
   try:
     jreq = requests.get(request_url).json()
@@ -147,7 +147,7 @@ def getFounders(orgjson):
 
     for fp in founderPaths:
       
-      request_url = "http://api.crunchbase.com/v/2/" + fp + "?user_key=" + key2
+      request_url = "http://api.crunchbase.com/v/2/" + fp + "?user_key=" + key1
       fdata = requests.get(request_url).json()
       foundersOut.append(fdata)      
 
@@ -178,7 +178,7 @@ def getFundingRounds(orgjson):
 
 def getFunding(path):
 
-  request_url = "http://api.crunchbase.com/v/2/" + path + "?user_key=" + key2
+  request_url = "http://api.crunchbase.com/v/2/" + path + "?user_key=" + key1
   jreq = requests.get(request_url).json()
   return jreq
 
