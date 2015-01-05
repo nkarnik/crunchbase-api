@@ -80,7 +80,10 @@ def writeFoundOrg(orgs, fname):
       for founder in out:
         print founder 
         if founder is not None:
-          writer.writerow(founder)
+          try:
+            writer.writerow(founder)
+          except:
+            pass
 
   finally:
     f.close()
