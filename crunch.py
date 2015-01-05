@@ -31,13 +31,18 @@ def getLatLong(street, city):
 def getOrganization(org):
 
   request_url = "http://api.crunchbase.com/v/2/organization/" + org + "?user_key=" + key3
-
-  jreq = requests.get(request_url).json()
-  return jreq
-
+  
+  try:
+    jreq = requests.get(request_url).json()
+    return jreq
+  
+  except:
+    return None
 
 def validate(orgjson):
 
+  if orgjson is None:
+    return False
   
   if len(orgjson.keys()) < 2:
     print "invalid"
@@ -70,7 +75,7 @@ def getLocation(orgjson):
 
 def writeFoundOrg(orgs, fname):
 
-  f = open(fname, 'wt')
+  f = open(fname, 'a')
 
   try:
     writer = csv.writer(f)
